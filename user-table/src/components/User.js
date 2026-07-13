@@ -1,54 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import {Table, TableContainer} from '@mui/material';
-const User = () => {
+import React from "react";
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Paper,
+} from "@mui/material";
 
-    const [users,setUsers] = useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then((res) => res.json())
-        .then((data) => setUsers(data))
-        .catch((err) => console.error("Error fetching users",err))
-    },[])
+const User = ({ users }) => {
   return (
     <div>
-       {/* <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Username</td>
-                    <td>Email</td>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user)  => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.username}</td>
-                    <td>{user.email}</td>
-                  </tr>
-                ))}
-            </tbody>
-        </table> */}
-
-       
-        <TableContainer>
-         <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>ID</TableCell>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Username</TableCell>
-                    <TableCell>Email</TableCell>
-                </TableRow>
-                <TableBody></TableBody>
-            </TableHead>
-         </Table>
-        </TableContainer>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Email</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.map((user) => (
+              <TableRow key={user.id}>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.username}</TableCell>
+                <TableCell>{user.email}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
-  )
-}
+  );
+};
 
-export default User
+export default User;
+
