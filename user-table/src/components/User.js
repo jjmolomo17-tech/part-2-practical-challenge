@@ -89,5 +89,5 @@ const User = () => {
   );
 };
 
-// Export the component so it can be used in App.js or elsewhere
+// Export the component so it can be used in App.js 
 export default User;
