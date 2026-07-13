@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export const User = () => {
+const User = () => {
+
+    const [users,setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then((res) => res.json())
+        .then((data) => setUsers(data))
+        .catch((err) => console.error("Error fetching users",err))
+    },[])
   return (
     <div>
-        <p>Hello</p>
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Username</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
+        </table>
     </div>
   )
 }
