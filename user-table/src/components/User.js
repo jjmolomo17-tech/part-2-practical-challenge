@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import {Table, TableContainer} from '@mui/material';
 const User = () => {
 
     const [users,setUsers] = useState([]);
@@ -12,7 +12,7 @@ const User = () => {
     },[])
   return (
     <div>
-        <table>
+       {/* <table>
             <thead>
                 <tr>
                     <td>ID</td>
@@ -31,7 +31,22 @@ const User = () => {
                   </tr>
                 ))}
             </tbody>
-        </table>
+        </table> */}
+
+       
+        <TableContainer>
+         <Table>
+            <TableHead>
+                <TableRow>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Username</TableCell>
+                    <TableCell>Email</TableCell>
+                </TableRow>
+                <TableBody></TableBody>
+            </TableHead>
+         </Table>
+        </TableContainer>
     </div>
   )
 }
